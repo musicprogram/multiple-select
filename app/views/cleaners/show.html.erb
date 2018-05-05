@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cleaner.name %>
+</p>
+
+  <% @cleaner.assignments.each do |assignment| %>
+    <%= assignment.city.name %> <br>
+  <% end%>
+
+<%= link_to 'Edit', edit_cleaner_path(@cleaner) %> |
+<%= link_to 'Back', cleaners_path %>

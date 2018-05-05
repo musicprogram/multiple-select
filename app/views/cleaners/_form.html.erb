@@ -1,0 +1,25 @@
+<%= form_with(model: cleaner, local: true) do |form| %>
+  <% if cleaner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cleaner.errors.count, "error") %> prohibited this cleaner from being saved:</h2>
+
+      <ul>
+      <% cleaner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :cleaner_name %>
+  </div>
+  
+  <%= form.collection_select(:city_ids, City.all, :id, :name, {:prompt => "Please Select a Sector"}, {:multiple => true})%>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
